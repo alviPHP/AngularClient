@@ -1,0 +1,117 @@
+<div class="container" style="margin: 100px;" >
+    <div class="card border-primar">
+    <div class="card-header">
+    <div class="card-body text-primary">
+    <form [formGroup]="gradesForm" 
+            (ngSubmit)="OnSubmit()" >
+        <h1 class="text-primary">Student Grades</h1>
+        
+        <div class="form-group">    
+          <label>Course</label> 
+          <select 
+          name="course"
+           class="form-control"
+           formControlName="courseId" (change)="GetSubjectsByCourseId($event)">
+              <option value="">Select Course</option>
+              <option [value]="course.id" *ngFor="let course of courseList">
+                  {{course.name}}
+              </option>
+          </select>   
+          
+        </div>
+
+        <div class="form-group">    
+            <label>Subject</label> 
+            <select 
+            name="subject"
+             class="form-control"
+             formControlName="subjectId" (change)="GetCompositeKeyId($event)" >
+                <option value="">Select Subject</option>
+                <option  [value]="subject.id" *ngFor="let subject of subjectList">
+                    {{subject.name}}
+                </option>
+            </select>   
+            
+          </div>
+
+          <div class="form-group">    
+            <label>Student</label> 
+            <select
+            formControlName="studentId"
+            name="student" class="form-control">
+                <option value="">Select Student</option>
+                <option [value]="student.id" *ngFor="let student of studentList">
+                    {{student.regNo +' '+student.fName +' '+ student.lName}}
+                </option>
+            </select>               
+          </div>
+
+          <div class="form-group">    
+            <label for="Marks">Marks</label>    
+            <input type="text" class="form-control"
+            formControlName="marks"
+            id="Marks" 
+            placeholder="Enter Marks out of hundered">
+          </div>
+        
+          
+          <div style="margin-top: 20px;" >
+            <button type="submit" class="btn btn-primary" >{{btnSave}}</button>
+           </div>
+      </form>
+    </div>
+</div>
+</div>
+</div>
+
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Couse Name</th>
+        <th scope="col">Subject Name</th>
+        <th scope="col">Student Enrolled</th>
+        <th scope="col">Roll Number</th>
+        <th scope="col">Marks</th>
+        <th scope="col">Grades</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+<tbody>
+  <tr *ngFor="let gl of gradesList;let i = index">
+    
+    <td>
+     {{i+1}}
+    </td>      
+    <td>
+      {{gl.courseName}}
+     </td>
+     <td>
+         {{gl.subjectName}}
+     </td>
+     <td>
+      {{gl.studentName}}
+      </td>
+    <td>
+        {{gl.registrationNo}}
+        </td>
+        <td>
+          {{gl.marks}}
+          </td>
+          <td>
+            {{gl.grade_Code}}
+            </td>
+    <td>
+        <button (click)="edit(gl.id,gl.courseId,gl.subjectId,gl.studentId,gl.marks)" class="btn btn-success">Edit</button>
+    </td>
+    <td>
+        <button (click)="Delete(gl.id)" class="btn btn-danger">Delete</button>
+    </td>
+
+  </tr>
+</tbody>
+
+
+  </table>

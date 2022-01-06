@@ -1,0 +1,50 @@
+<div class="container" style="margin: 100px;" >
+    
+    <form [formGroup]="subjectForm" (ngSubmit)="OnSubmit()">
+        <h1 class="text-primary">Subject Management</h1>
+        
+        <div class="form-group">
+    
+          <label for="SubjectName">Subject Name</label>
+    
+          <input type="text" class="form-control"
+          formControlName="name"
+          id="Name" 
+          placeholder="Enter subject">      
+    
+        </div>
+        
+        <div style="margin-top: 20px;" >
+          <button type="submit" class="btn btn-primary" >{{btnSave}}</button>
+         </div>
+      </form>
+    </div>
+  
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">S. No.</th>
+          <th scope="col">Subject Name</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+  <tbody>
+    <tr *ngFor="let subject of subjectList;let i = index">
+      
+      <td>
+       {{i+1}}
+      </td>
+      
+      <td>
+        {{subject.name}}
+       </td>
+  
+  <td><button (click)="edit(subject.id)" class="btn btn-success">Edit</button></td>
+  <td><button (click)="Delete(subject.id)" class="btn btn-danger">Delete</button></td>
+  
+    </tr>
+  </tbody>
+  
+  
+    </table>

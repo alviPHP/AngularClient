@@ -1,0 +1,72 @@
+<div class="container" style="margin: 100px;" >
+    
+    <form [formGroup]="studentForm" (ngSubmit)="OnSubmit()">
+        <h1 class="text-primary">Student Management</h1>
+        
+        <div class="form-group">    
+          <label for="StudentFName">First Name</label>    
+          <input type="text" class="form-control"
+          formControlName="fName"
+          id="FName" 
+          placeholder="Enter first name">
+        </div>
+        <div class="form-group">    
+            <label for="StudentLName">Last Name</label>    
+            <input type="text" class="form-control"
+            formControlName="lName"
+            id="LName" 
+            placeholder="Enter last name">
+          </div>
+          <div class="form-group">    
+            <label for="DOF">Date Of Birth</label>    
+            <input type="date" class="form-control"
+            formControlName="dof" 
+            id="DOF"
+            placeholder="dd/MM/yyyy">
+          </div>
+          <div class="form-group">    
+            <label for="RegNo">Registration Number</label>    
+            <input type="text" class="form-control"
+            formControlName="regNo"
+            id="RegNo" 
+            placeholder="Enter Salary">
+          </div>
+        
+          <div style="margin-top: 20px;" >
+            <button type="submit" class="btn btn-primary" >{{btnSave}}</button>
+           </div>
+      </form>
+    </div>
+  
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">S. No.</th>
+          <th scope="col">Name</th>
+          <th scope="col">Date Of Birth</th>
+          <th scope="col">Registration Number</th>
+        </tr>
+      </thead>
+  <tbody>
+    <tr *ngFor="let student of studentList;let i = index">
+      
+      <td>
+       {{i+1}}
+      </td>      
+      <td>
+        {{student.fName+' '+student.lName}}
+       </td>
+       <td>
+           {{student.dof | date:'MM/dd/yyyy'}}
+       </td>
+       <td>
+        {{student.regNo}}
+        </td>
+  <td><button (click)="edit(student.id)" class="btn btn-success">Edit</button></td>
+  <td><button (click)="Delete(student.id)" class="btn btn-danger">Delete</button></td>
+  
+    </tr>
+  </tbody>
+  
+  
+    </table>

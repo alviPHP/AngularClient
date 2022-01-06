@@ -1,0 +1,57 @@
+<div class="container" style="margin: 100px;" >
+    <div class="card border-primar">
+    <div class="card-header">
+    <div class="card-body text-primary">
+    <form [formGroup]="listStudentForm"  >
+        <h1>List Student</h1>
+        
+        <div class="form-group">    
+            <label>Student</label> 
+            <select
+            formControlName="studentId"
+            name="student" class="form-control" (change)="GetDataByStudentId($event)">
+                <option value="">Select Student</option>
+                <option [value]="student.id" *ngFor="let student of studentList">
+                    {{student.regNo +' '+student.fName +' '+ student.lName}}
+                </option>
+            </select>               
+          </div>
+
+
+      </form>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Subject Name</th>   
+        <th scope="col">Marks out of 100</th>  
+        <th scope="col">Grade of Subject</th>  
+      </tr>
+    </thead>
+<tbody>
+  <tr *ngFor="let sg of studentGradeList;let i = index">    
+    <td>
+        {{i+1}}
+    </td>  
+     
+    <td>
+        {{sg.subjectName}}
+    </td>
+    <td>
+        {{sg.marks}}
+    </td>
+    <td>
+        {{sg.grade_Code}}
+    </td>
+    
+  </tr>
+</tbody>
+  </table>

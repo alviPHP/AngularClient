@@ -1,0 +1,85 @@
+<div class="container" style="margin: 100px;" >
+    <div class="card border-primar">
+    <div class="card-header">
+    <div class="card-body text-primary">
+    <form [formGroup]="listSubjectForm"  >
+        <h1>List Subject</h1>
+        
+        <div class="form-group">    
+          <label>Subject</label> 
+          <select 
+          name="subject"
+           class="form-control"
+           formControlName="subjectId" (change)="GetDataBySubjectId($event)">
+             <option value="">Select Subject</option>
+             <option  [value]="subject.id" *ngFor="let subject of subjectList">
+               {{subject.name}}
+           </option>
+       </select>  
+        </div>
+      </form>
+    </div>
+</div>
+</div>
+</div>
+
+<h2 class="text-primary">Teachers Data</h2>
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Course Name</th>      
+        <th scope="col">Teacher Name</th>  
+      </tr>
+    </thead>
+<tbody>
+  <tr *ngFor="let ts of teacherCourseList;let i = index">    
+    <td>
+        {{i+1}}
+    </td>  
+    <td>
+        {{ts.courseName}}
+    </td>    
+    <td>
+        {{ts.teacherName}}
+    </td>
+  </tr>
+</tbody>
+  </table>
+
+  <h2 class="text-primary">Student Data</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Student Name</th>     
+        <th scope="col">Registration No</th>  
+        <th scope="col">Marks out of 100</th>  
+        <th scope="col">Grade of Subject</th>  
+      </tr>
+    </thead>
+<tbody>
+  <tr *ngFor="let sg of studentGradeList;let i = index">    
+    <td>
+        {{i+1}}
+    </td>  
+    <td>
+        {{sg.courseName}}
+    </td>    
+    <td>
+        {{sg.studentName}}
+    </td>
+    <td>
+        {{sg.registrationNo}}
+    </td>
+    <td>
+        {{sg.marks}}
+    </td>
+    <td>
+        {{sg.grade_Code}}
+    </td>    
+  </tr>
+</tbody>
+  </table>

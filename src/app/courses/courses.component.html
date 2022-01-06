@@ -1,0 +1,51 @@
+<div class="container" style="margin: 100px;" >
+    
+  <form [formGroup]="courseForm" (ngSubmit)="OnSubmit()">
+      <h1 class="text-primary">Course Management</h1>
+      
+      <div class="form-group">
+  
+        <label for="CourseName"  >Course Name</label>
+  
+        <input type="text" class="form-control" 
+         
+        formControlName="name"
+        id="Name" 
+        placeholder="Enter course">      
+  
+      </div>
+     <div style="margin-top: 20px;" >
+      <button type="submit" class="btn btn-primary" >{{btnSave}}</button>
+     </div>
+      
+    </form>
+  </div>
+
+  <table class="table table-bordered">
+    <thead >
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Course Name</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+<tbody>
+  <tr *ngFor="let course of courseList;let i = index">
+    
+    <td>
+     {{i+1}}
+    </td>
+    
+    <td>
+      {{course.name}}
+     </td>
+
+<td><button (click)="edit(course.id)"  class="btn btn-success">Edit</button></td>
+<td><button (click)="Delete(course.id)"  class="btn btn-danger">Delete</button></td>
+
+  </tr>
+</tbody>
+
+
+  </table>

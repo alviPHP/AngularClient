@@ -1,0 +1,82 @@
+<div class="container" style="margin: 100px;" >
+    <div class="card border-primar">
+    <div class="card-header">
+    <div class="card-body text-primary">
+    <form [formGroup]="listCourseForm"  >
+        <h1 class="text-primary">List Course</h1>
+        
+        <div class="form-group">    
+          <label>Course</label> 
+          <select 
+          name="course"
+           class="form-control"
+           formControlName="courseId" (change)="GetDataByCourseId($event)">
+              <option value="">Select Course</option>
+              <option [value]="course.id" *ngFor="let course of courseList">
+                  {{course.name}}
+              </option>
+          </select>  
+        </div>
+      </form>
+    </div>
+</div>
+</div>
+</div>
+
+<h2 class="text-primary">Teachers Data</h2>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Subject Teaches</th>   
+        <th scope="col">Teacher Name</th>
+             
+      </tr>
+    </thead>
+<tbody>
+  <tr *ngFor="let ts of teacherSubjectList;let i = index">    
+    <td>
+        {{i+1}}
+    </td>  
+    <td>
+        {{ts.teacherName}}
+    </td>    
+    <td>
+        {{ts.subjectName}}
+    </td>
+  </tr>
+</tbody>
+  </table>
+
+  <h2 class="text-primary">Students Data</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Student Name</th>
+        <th scope="col">Registration No</th>     
+        <th scope="col">Total Percentage %</th>  
+        <th scope="col">Grade</th>  
+      </tr>
+    </thead>
+<tbody>
+  <tr *ngFor="let ss of studentSubjectList;let i = index">    
+    <td>
+        {{i+1}}
+    </td>  
+    <td>
+        {{ss.studentName}}
+    </td>    
+    <td>
+        {{ss.registrationNo}}
+    </td>
+    <td>
+        {{ss.averageMarks}}
+    </td>
+    <td>
+        {{ss.grade_Code}}
+    </td>
+    
+  </tr>
+</tbody>
+  </table>

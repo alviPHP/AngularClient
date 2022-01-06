@@ -1,0 +1,98 @@
+<div class="container" style="margin: 100px;" >
+    <div class="card border-primar">
+    <div class="card-header">
+    <div class="card-body text-primary">
+    <form [formGroup]="designCourseForm" 
+            (ngSubmit)="OnSubmit()" >
+        <h1>Course Design Management</h1>
+        
+        <div class="form-group">    
+          <label>Course</label> 
+          <select 
+          name="course"
+           class="form-control"
+           formControlName="courseId"
+           >
+              <option value="">Select Course</option>
+              <option [value]="course.id" *ngFor="let course of courseList">
+                  {{course.name}}
+              </option>
+          </select>   
+          
+        </div>
+
+        <div class="form-group">    
+            <label>Subject</label> 
+            <select 
+            name="subject"
+             class="form-control"
+             formControlName="subjectId">
+                <option value="">Select Subject</option>
+                <option  [value]="subject.id" *ngFor="let subject of subjectList">
+                    {{subject.name}}
+                </option>
+            </select>   
+            
+          </div>
+
+          <div class="form-group">    
+            <label>Teacher</label> 
+            <select
+            formControlName="teacherId"
+            name="teacher" class="form-control">
+                <option value="">Select Teacher</option>
+                <option [value]="teacher.id" *ngFor="let teacher of teacherList">
+                    {{teacher.fName +' '+ teacher.lName}}
+                </option>
+            </select>   
+            
+          </div>
+        
+          
+          <div style="margin-top: 20px;" >
+            <button type="submit" class="btn btn-primary" >{{btnSave}}</button>
+           </div>
+      </form>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Couse Name</th>
+        <th scope="col">Subject Name</th>
+        <th scope="col">Teacher Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+<tbody>
+  <tr *ngFor="let dc of designCourseList;let i = index">
+    
+    <td>
+     {{i+1}}
+    </td>      
+    <td>
+      {{dc.courseName}}
+     </td>
+     <td>
+         {{dc.subjectName}}
+     </td>
+     <td>
+      {{dc.teacherName}}
+      </td>
+      <td><button (click)="edit(dc.id,dc.courseId,dc.subjectId,dc.teacherId)" class="btn btn-success">Edit</button></td>
+<td><button (click)="Delete(dc.id)" class="btn btn-danger">Delete</button></td>
+
+  </tr>
+</tbody>
+
+
+  </table>
